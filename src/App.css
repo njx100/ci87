@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(98, 98, 98);
+}
+
+.new-task {
+  border-bottom: 1px solid black;
+  width: 30%;
+}
+
+.new-task input {
+  border: 0;
+  text-align: left;
+  font-size: 30px;
+  padding: 5px;
+  font-weight: 200;
+  outline: none;
+  float: left;
+  width: 100%;
+}
+
+.task-list {
+  font-size: 25px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.task-list input {
+  margin-right: 2rem;
+  margin: 1rem;
+}
+
+.footer {
+  margin-top: 200px;
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  font-size: 30px;
+}
+
+.footer:first-child {
+  float: left;
+}
