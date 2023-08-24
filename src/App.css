@@ -16,9 +16,12 @@
   color: rgb(98, 98, 98);
 }
 
-.new-task {
-  border-bottom: 1px solid black;
-  width: 30%;
+.todo-header {
+  border-bottom: 2px solid rgba(98, 98, 98, 0.3);
+}
+
+.todo-header .new-task {
+  width: 100%;
 }
 
 .new-task input {
