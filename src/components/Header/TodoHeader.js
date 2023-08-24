@@ -2,7 +2,7 @@ import NewTask from "../NewTask/NewTask";
 
 const TodoHeader = () => {
   return (
-    <div>
+    <div className="todo-header">
       <NewTask />
     </div>
   );
