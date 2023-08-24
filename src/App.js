@@ -1,19 +1,8 @@
 import "./App.css";
-
-import Footer from "./components/Footer/Footer";
-import TasksList from "./components/TodoList/TasksList";
-import TodoHeader from "./components/Header/TodoHeader";
+import Products from "./Pages/Product";
 
 const App = () => {
-  // aafbdasfgdaf
-  return (
-    <div className="App">
-      <TodoHeader />
-
-      <TasksList />
-      <Footer />
-    </div>
-  );
+  return <Products />;
 };
 
 export default App;
