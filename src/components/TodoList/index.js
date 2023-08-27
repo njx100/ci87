@@ -1,11 +1,11 @@
-import TodoListData from "../../Data/TodoListData";
+import { TODOS } from "../../Data/Todos";
 import Todo from "../Todo";
 
 const TodoList = () => {
   return (
     <div className="todo-list">
-      {TodoListData.map(({ id, task }) => (
-        <Todo id={id} task={task} />
+      {TODOS.map(({ id, task }) => (
+        <Todo key={id} task={task} />
       ))}
     </div>
   );

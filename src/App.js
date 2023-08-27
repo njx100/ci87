@@ -1,11 +1,11 @@
 import "./App.css";
-import TodoPage from "./Pages/TodoPage";
+import Todo from "./Pages/Todo";
 
 const App = () => {
   // aafbdasfgdaf
   return (
     <div className="App">
-      <TodoPage />
+      <Todo />
     </div>
   );
 };

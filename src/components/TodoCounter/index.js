@@ -1,11 +1,7 @@
 const TodoCounter = ({ tasks = 0 }) => {
   return (
     <div>
-      {parseInt(tasks) > 1 ? (
-        <p>{tasks} tasks left!</p>
-      ) : (
-        <p>{tasks} task left!</p>
-      )}
+      <p>{`${tasks} ${tasks > 1 ? "tasks" : "task"} left!`}</p>
     </div>
   );
 };
