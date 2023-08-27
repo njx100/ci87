@@ -1,25 +1,24 @@
 import { useState } from "react";
 
-const Todo = (props) => {
-  const [isChecked, setIsChecked] = useState(false);
+const Todo = ({ todo, handeCompleteTodo }) => {
+  const { id, task, isCompleted } = todo;
 
   return (
     <div className="todo-container">
       <input
         type="checkbox"
-        name={props.id}
-        id={props.id}
-        onChange={() => {
-          !isChecked ? setIsChecked(true) : setIsChecked(false);
-        }}
+        name={id}
+        id={id}
+        checked={isCompleted}
+        onClick={handeCompleteTodo}
       />
       <label
-        htmlFor={props.id}
+        htmlFor={id}
         style={{
-          textDecorationLine: isChecked ? "line-through" : "none",
+          textDecorationLine: isCompleted ? "line-through" : "none",
         }}
       >
-        {props.task}
+        {task}
       </label>
     </div>
   );
