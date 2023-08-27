@@ -1,9 +1,9 @@
 const TodoListData = [
-  { id: "1", task: "Clean up bedroom" },
-  { id: "2", task: "Buy some milk" },
-  { id: "3", task: "Jogging" },
-  { id: "4", task: "Learn React" },
-  { id: "5", task: "Doing Excercises" },
+  { id: "1", task: "Clean up bedroom", isCompleted: false },
+  { id: "2", task: "Buy some milk", isCompleted: false },
+  { id: "3", task: "Jogging", isCompleted: false },
+  { id: "4", task: "Learn React", isCompleted: false },
+  { id: "5", task: "Doing Excercises", isCompleted: false },
 ];
 
 export default TodoListData;
