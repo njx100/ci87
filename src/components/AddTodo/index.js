@@ -1,9 +1,9 @@
-const NewTask = () => {
+const AddTodo = () => {
   return (
-    <div className="new-task">
+    <div className="add-todo">
       <input type="text" placeholder="Enter task here ..." />
     </div>
   );
 };
 
-export default NewTask;
+export default AddTodo;

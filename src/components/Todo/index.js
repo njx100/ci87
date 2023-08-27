@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Task = (props) => {
+const Todo = (props) => {
   const [isChecked, setIsChecked] = useState(false);
 
   return (
@@ -25,4 +25,4 @@ const Task = (props) => {
   );
 };
 
-export default Task;
+export default Todo;

@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-.App {
+.todo-page {
   text-align: center;
   background-color: white;
   min-height: 100vh;
@@ -20,11 +20,11 @@
   border-bottom: 2px solid rgba(98, 98, 98, 0.3);
 }
 
-.todo-header .new-task {
+.todo-header .add-todo {
   width: 100%;
 }
 
-.new-task input {
+.add-todo input {
   border: 0;
   text-align: left;
   font-size: 30px;
@@ -35,7 +35,7 @@
   width: 100%;
 }
 
-.task-list {
+.todo-list {
   font-size: 25px;
   margin-top: 30px;
   display: flex;
@@ -43,19 +43,15 @@
   align-items: flex-start;
 }
 
-.task-list input {
+.todo-list input {
   margin-right: 2rem;
   margin: 1rem;
 }
 
-.footer {
-  margin-top: 200px;
+.todo-footer {
+  margin-top: 100px;
   display: flex;
   justify-content: space-between;
   width: 30%;
   font-size: 30px;
-}
-
-.footer:first-child {
-  float: left;
 }

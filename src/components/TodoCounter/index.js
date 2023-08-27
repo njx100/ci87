@@ -1,4 +1,4 @@
-const TaskCounter = ({ tasks = 0 }) => {
+const TodoCounter = ({ tasks = 0 }) => {
   return (
     <div>
       {parseInt(tasks) > 1 ? (
@@ -10,4 +10,4 @@ const TaskCounter = ({ tasks = 0 }) => {
   );
 };
 
-export default TaskCounter;
+export default TodoCounter;

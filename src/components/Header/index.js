@@ -1,9 +1,9 @@
-import NewTask from "../NewTask/NewTask";
+import AddTodo from "../AddTodo";
 
 const TodoHeader = () => {
   return (
     <div className="todo-header">
-      <NewTask />
+      <AddTodo />
     </div>
   );
 };

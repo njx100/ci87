@@ -1,4 +1,4 @@
-const TasksListData = [
+const TodoListData = [
   { id: "1", task: "Clean up bedroom" },
   { id: "2", task: "Buy some milk" },
   { id: "3", task: "Jogging" },
@@ -6,4 +6,4 @@ const TasksListData = [
   { id: "5", task: "Doing Excercises" },
 ];
 
-export default TasksListData;
+export default TodoListData;
