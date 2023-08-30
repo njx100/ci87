@@ -1,17 +1,14 @@
-const Todo = ({ todo }) => {
-  const { id, task, isCompleted } = todo;
-
+const Todo = ({ todo, isCompleted }) => {
   return (
     <div className="todo-container">
-      <input type="checkbox" name={id} id={id} checked={isCompleted} />
+      <input type="checkbox" checked={isCompleted} />
       <label
-        htmlFor={id}
         style={{
           textDecorationLine: isCompleted ? "line-through" : "none",
           opacity: isCompleted ? ".6" : "1",
         }}
       >
-        {task}
+        {todo}
       </label>
     </div>
   );
