@@ -1,9 +1,9 @@
 import TodoCounter from "../TodoCounter";
 
-const TodoFooter = () => {
+const TodoFooter = ({ todoLeft }) => {
   return (
     <div className="todo-footer">
-      <TodoCounter tasks="5" className="task-counter" />
+      <p>{`${todoLeft} ${todoLeft > 1 ? "tasks" : "task"} left!`}</p>
       <p className="footer-text">MindX todolist</p>
     </div>
   );

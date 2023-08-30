@@ -4,11 +4,20 @@ import TodoList from "../../components/TodoList";
 import { TODOS } from "../../Data/Todos";
 
 const TodoPage = () => {
+  const todos = TODOS;
+  const todoLeft = () => {
+    let todoCounter = 0;
+    todos.forEach((todo) => {
+      todo.isCompleted ? (todoCounter += 0) : todoCounter++;
+    });
+    return todoCounter;
+  };
+
   return (
     <div className="todo-page">
       <TodoHeader />
-      <TodoList todos={TODOS} />
-      <TodoFooter />
+      <TodoList todos={todos} />
+      <TodoFooter todoLeft={todoLeft()} />
     </div>
   );
 };
