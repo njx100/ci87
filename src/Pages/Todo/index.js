@@ -2,6 +2,7 @@ import TodoHeader from "../../components/Header";
 import TodoFooter from "../../components/TodoFooter";
 import TodoList from "../../components/TodoList";
 import { TODOS } from "../../Data/Todos";
+import "./style.css";
 
 const TodoPage = () => {
   const todos = TODOS;

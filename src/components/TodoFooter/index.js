@@ -1,4 +1,4 @@
-import TodoCounter from "../TodoCounter";
+import "./style.css";
 
 const TodoFooter = ({ todoLeft }) => {
   return (

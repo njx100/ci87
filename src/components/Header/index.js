@@ -1,9 +1,9 @@
-import AddTodo from "../AddTodo";
+import "./style.css";
 
 const TodoHeader = () => {
   return (
     <div className="todo-header">
-      <AddTodo />
+      <input type="text" placeholder="Enter task here ..." />
     </div>
   );
 };

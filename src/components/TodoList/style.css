@@ -1,0 +1,12 @@
+.todo-list {
+  font-size: 25px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.todo-list input {
+  margin-right: 2rem;
+  margin: 1rem;
+}

@@ -1,3 +1,5 @@
+import "./style.css";
+
 const Todo = ({ todo, isCompleted }) => {
   return (
     <div className="todo-container">
