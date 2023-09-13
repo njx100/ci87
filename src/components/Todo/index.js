@@ -1,7 +1,8 @@
 import "./style.css";
 import { useState } from "react";
+import { DeleteOutlined } from "@ant-design/icons";
 
-const Todo = ({ todo, updateStatus, editTodo }) => {
+const Todo = ({ todo, updateStatus, editTodo, deleteTodo }) => {
   const { id, task, isCompleted } = todo;
   const [isEditing, setIsEditing] = useState(false);
   const [text, setText] = useState(task);
@@ -28,12 +29,18 @@ const Todo = ({ todo, updateStatus, editTodo }) => {
           onKeyDown={handleEnter}
         ></input>
       ) : (
-        <label
-          className={isCompleted ? "task-completed" : null}
-          onDoubleClick={() => setIsEditing(true)}
-        >
-          {text}
-        </label>
+        <div className="text-container">
+          <label
+            className={isCompleted ? "task-completed" : null}
+            onDoubleClick={() => setIsEditing(true)}
+          >
+            {text}
+          </label>
+          <DeleteOutlined
+            className="delete-btn"
+            onClick={() => deleteTodo(id)}
+          />
+        </div>
       )}
     </div>
   );

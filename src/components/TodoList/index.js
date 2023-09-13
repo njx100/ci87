@@ -1,26 +1,33 @@
 import Todo from "../Todo";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./style.css";
 
-const TodoList = ({ todos: todoProps, updateStatus, editTodo }) => {
+const TodoList = ({ todos: todoProps, updateStatus, editTodo, deleteTodo }) => {
   const [todos, setTodos] = useState(todoProps);
+  const [displayTodos, setDisplayTodos] = useState("all");
 
   const handleSelect = (option) => {
     switch (option) {
       case "all":
         setTodos(todoProps);
+        setDisplayTodos("all");
         break;
       case "active":
         setTodos(todoProps.filter((todo) => todo.isCompleted === false));
+        setDisplayTodos("active");
         break;
       case "completed":
         setTodos(todoProps.filter((todo) => todo.isCompleted === true));
+        setDisplayTodos("completed");
         break;
-
       default:
         break;
     }
   };
+
+  useEffect(() => {
+    handleSelect(displayTodos);
+  }, [todoProps]);
 
   return (
     <div className="todo-list">
@@ -36,6 +43,7 @@ const TodoList = ({ todos: todoProps, updateStatus, editTodo }) => {
           todo={todo}
           updateStatus={updateStatus}
           editTodo={editTodo}
+          deleteTodo={deleteTodo}
         />
       ))}
     </div>

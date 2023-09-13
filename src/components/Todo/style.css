@@ -1,4 +1,22 @@
+.todo-container {
+  display: flex;
+  align-items: center;
+}
+
+.text-container {
+  width: 100%;
+}
+
 .task-completed {
   text-decoration: line-through;
   opacity: 0.6;
+}
+
+.delete-btn {
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.delete-btn:hover {
+  color: rgb(235, 80, 80);
 }
