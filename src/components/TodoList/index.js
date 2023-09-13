@@ -2,11 +2,16 @@ import Todo from "../Todo";
 
 import "./style.css";
 
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, updateStatus, editTodo }) => {
   return (
     <div className="todo-list">
-      {todos.map(({ todo, isCompleted }) => (
-        <Todo todo={todo} isCompleted={isCompleted} />
+      {todos.map((todo) => (
+        <Todo
+          key={todo.id}
+          todo={todo}
+          updateStatus={updateStatus}
+          editTodo={editTodo}
+        />
       ))}
     </div>
   );
