@@ -1,9 +1,18 @@
+import { Button } from "antd";
+import AddTaskWindow from "../AddTaskWindow";
 import "./style.css";
+import { useState } from "react";
 
 const TodoHeader = ({ addTodo }) => {
+  const [isAddingTask, setIsAddingTask] = useState(false);
+
+  const handleDisplayAddTask = (addingStatus) => {
+    setIsAddingTask(addingStatus);
+  };
+
   return (
     <div className="todo-header">
-      <input
+      {/* <input
         type="text"
         placeholder="Enter task here ..."
         onKeyDown={(event) => {
@@ -12,7 +21,15 @@ const TodoHeader = ({ addTodo }) => {
             event.target.value = "";
           }
         }}
-      />
+      /> */}
+      {isAddingTask ? (
+        <AddTaskWindow
+          handleDisplayAddTask={handleDisplayAddTask}
+          addTodo={addTodo}
+        />
+      ) : (
+        <Button onClick={() => handleDisplayAddTask(true)}>Add task</Button>
+      )}
     </div>
   );
 };

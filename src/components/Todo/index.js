@@ -3,7 +3,7 @@ import { useState } from "react";
 import { DeleteOutlined } from "@ant-design/icons";
 
 const Todo = ({ todo, updateStatus, editTodo, deleteTodo }) => {
-  const { id, task, isCompleted } = todo;
+  const { id, task, isCompleted, estPomodoros } = todo;
   const [isEditing, setIsEditing] = useState(false);
   const [text, setText] = useState(task);
 
@@ -40,6 +40,7 @@ const Todo = ({ todo, updateStatus, editTodo, deleteTodo }) => {
             className="delete-btn"
             onClick={() => deleteTodo(id)}
           />
+          <span>{estPomodoros}</span>
         </div>
       )}
     </div>

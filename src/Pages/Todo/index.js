@@ -16,9 +16,8 @@ const TodoPage = () => {
     return todoCounter;
   };
 
-  const addTodo = (newTaskContent) => {
-    const newTask = { id: uuidv4(), task: newTaskContent, isCompleted: false };
-    setTodos([...todos, newTask]);
+  const addTodo = (newTodo) => {
+    setTodos([...todos, newTodo]);
   };
 
   const updateStatus = (key) => {
