@@ -16,19 +16,18 @@ const TodoPage = () => {
     return todoCounter;
   };
 
-  const addTodo = (newTaskContent) => {
-    const newTask = { id: uuidv4(), task: newTaskContent, isCompleted: false };
-    setTodos([...todos, newTask]);
+  const addTodo = (newTodo) => {
+    setTodos([...todos, newTodo]);
   };
 
   const updateStatus = (key) => {
-    const newTodoList = todos.map((todo) => {
+    const newStatus = todos.map((todo) => {
       if (todo.id === key) {
         todo.isCompleted = !todo.isCompleted;
       }
       return todo;
     });
-    setTodos(newTodoList);
+    setTodos(newStatus);
   };
 
   const editTodo = (id, text) => {
@@ -41,10 +40,22 @@ const TodoPage = () => {
     setTodos(updatedTodoList);
   };
 
+  const deleteTodo = (id) => {
+    const newTodoList = todos.filter((todo) => {
+      if (todo.id !== id) return todo;
+    });
+    setTodos(newTodoList);
+  };
+
   return (
     <div className="todo-page">
       <TodoHeader addTodo={addTodo} />
-      <TodoList todos={todos} updateStatus={updateStatus} editTodo={editTodo} />
+      <TodoList
+        todos={todos}
+        updateStatus={updateStatus}
+        editTodo={editTodo}
+        deleteTodo={deleteTodo}
+      />
       <TodoFooter todoLeft={todoLeft()} />
     </div>
   );
