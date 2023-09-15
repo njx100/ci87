@@ -17,44 +17,54 @@ const AddTaskWindow = ({ handleDisplayAddTask, addTodo }) => {
     };
     addTodo(newTodo);
     handleDisplayAddTask(false);
+    setText("");
   };
 
   return (
     <div className="add-task-window">
       <input
+        className="add-task-input"
         type="text"
         value={text}
         onChange={(event) => setText(event.target.value)}
         onKeyDown={(event) => {
-          event.key === "Enter" && handleSaveTodo();
+          event.key === "Enter" && text !== "" && handleSaveTodo();
         }}
-        placeholder="What are you working on?"
+        placeholder="Add new task..."
       />
-      <p>Est Pomodoros</p>
-      <Row>
+
+      <Row className="est-pomodoros-container">
         <Col>
-          <input type="text" value={estPomodoros} disabled />
+          <p>Est Pomodoros:</p>
         </Col>
         <Col>
-          <Button
+          <input
+            className="pomodoros-input"
+            type="text"
+            value={estPomodoros}
+            size="2"
+          />
+        </Col>
+        <Col>
+          <button
             className="increase-pomodoros"
             onClick={() => setEstPomodoros(estPomodoros + 1)}
           >
             <CaretUpOutlined />
-          </Button>
+          </button>
         </Col>
         <Col>
-          <Button
+          <button
             className="decrease-pomodoros"
             onClick={() =>
               estPomodoros > 1 && setEstPomodoros(estPomodoros - 1)
             }
           >
             <CaretDownOutlined />
-          </Button>
+          </button>
         </Col>
       </Row>
-      <Row>
+      <Row className="save-and-cancel-btn">
         <Col>
           <Button
             onClick={() => {
@@ -66,7 +76,12 @@ const AddTaskWindow = ({ handleDisplayAddTask, addTodo }) => {
           </Button>
         </Col>
         <Col>
-          <Button onClick={() => handleSaveTodo()}>Save</Button>
+          <Button
+            onClick={() => handleSaveTodo()}
+            disabled={text === "" ? true : false}
+          >
+            Save
+          </Button>
         </Col>
       </Row>
     </div>

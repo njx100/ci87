@@ -1,5 +1,50 @@
 .add-task-window {
-  position: absolute;
-  background-color: aquamarine;
-  padding: 10rem;
+  margin-top: 2rem;
+  background-color: white;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+.add-task-input input {
+  padding: 2rem;
+  background-color: white;
+  font-size: 1.5rem !important;
+}
+
+.est-pomodoros-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.est-pomodoros-container p {
+  font-size: 1.2rem;
+}
+
+.pomodoros-input {
+  text-align: center !important;
+  height: 3rem;
+}
+
+Button {
+  all: unset;
+}
+
+.increase-pomodoros,
+.decrease-pomodoros {
+  width: 2.5rem;
+  height: 2.5rem;
+  text-align: center;
+  padding: auto;
+  font-size: 1.5rem;
+}
+
+.save-and-cancel-btn Button {
+  margin: 0.2rem;
 }

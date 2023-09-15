@@ -31,11 +31,41 @@ const TodoList = ({ todos: todoProps, updateStatus, editTodo, deleteTodo }) => {
 
   return (
     <div className="todo-list">
-      <select onChange={(event) => handleSelect(event.target.value)}>
-        <option value="all">All</option>
-        <option value="active">Active</option>
-        <option value="completed">Completed</option>
-      </select>
+      <fieldset className="display-box">
+        <div>
+          <input
+            type="radio"
+            id="all"
+            name="display"
+            value="all"
+            onClick={() => handleSelect("all")}
+            checked={displayTodos === "all" ? true : false}
+          />
+          <label for="all">All</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="active"
+            name="display"
+            value="active"
+            onClick={() => handleSelect("active")}
+            checked={displayTodos === "active" ? true : false}
+          />
+          <label for="active">Active</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="completed"
+            name="display"
+            value="completed"
+            onClick={() => handleSelect("completed")}
+            checked={displayTodos === "completed" ? true : false}
+          />
+          <label for="completed">Completed</label>
+        </div>
+      </fieldset>
 
       {todos.map((todo) => (
         <Todo

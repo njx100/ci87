@@ -48,15 +48,17 @@ const TodoPage = () => {
   };
 
   return (
-    <div className="todo-page">
-      <TodoHeader addTodo={addTodo} />
-      <TodoList
-        todos={todos}
-        updateStatus={updateStatus}
-        editTodo={editTodo}
-        deleteTodo={deleteTodo}
-      />
-      <TodoFooter todoLeft={todoLeft()} />
+    <div className="todo__page">
+      <div className="todo__page--container">
+        <TodoHeader addTodo={addTodo} />
+        <TodoList
+          todos={todos}
+          updateStatus={updateStatus}
+          editTodo={editTodo}
+          deleteTodo={deleteTodo}
+        />
+        <TodoFooter todoLeft={todoLeft()} />
+      </div>
     </div>
   );
 };
