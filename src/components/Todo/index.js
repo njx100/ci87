@@ -1,11 +1,13 @@
 import "./style.css";
 import { useState } from "react";
 import { DeleteOutlined } from "@ant-design/icons";
+import { AiFillCheckSquare } from "react-icons/ai";
 
 const Todo = ({ todo, updateStatus, editTodo, deleteTodo }) => {
   const { id, task, isCompleted, estPomodoros } = todo;
   const [isEditing, setIsEditing] = useState(false);
   const [text, setText] = useState(task);
+  const [displayDelete, setDisplayDelete] = useState(false);
 
   const handleEnter = (e) => {
     if (e.key === "Enter" && text) {
@@ -15,14 +17,20 @@ const Todo = ({ todo, updateStatus, editTodo, deleteTodo }) => {
   };
 
   return (
-    <div className="todo-container">
-      <input
-        type="checkbox"
-        onChange={() => updateStatus(id)}
-        checked={isCompleted}
-      />
+    <div
+      className="todo-container"
+      onMouseOver={() => setDisplayDelete(true)}
+      onMouseOut={() => setDisplayDelete(false)}
+    >
+      <button onClick={() => updateStatus(id)}>
+        <AiFillCheckSquare
+          className={`checkbox ${!isCompleted && "checkbox-unchecked"}`}
+        />
+      </button>
+
       {isEditing ? (
         <input
+          className="edit-task"
           type="text"
           value={text}
           onChange={(event) => setText(event.target.value)}
@@ -36,13 +44,14 @@ const Todo = ({ todo, updateStatus, editTodo, deleteTodo }) => {
           >
             {text}
           </label>
-          <DeleteOutlined
-            className="delete-btn"
-            onClick={() => deleteTodo(id)}
-          />
-          <span>{estPomodoros}</span>
         </div>
       )}
+
+      <p className="est-pomodoros">{estPomodoros}</p>
+      <DeleteOutlined
+        className={`delete-btn ${displayDelete ? "delete-btn-active" : null}`}
+        onClick={() => deleteTodo(id)}
+      />
     </div>
   );
 };

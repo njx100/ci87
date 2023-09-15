@@ -1,12 +1,21 @@
-.todo-page {
+.todo__page {
   text-align: center;
-  background-color: white;
+  background: linear-gradient(45deg, #b262ff, #5166ff);
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.todo__page--container {
+  border-radius: 15px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  background: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: rgb(98, 98, 98);
+  color: black;
 }
