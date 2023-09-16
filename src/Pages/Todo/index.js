@@ -1,10 +1,9 @@
-import TodoHeader from "../../components/Header";
+import AddTask from "../../components/AddTask";
 import TodoFooter from "../../components/TodoFooter";
 import TodoList from "../../components/TodoList";
 import { TODOS } from "../../Data/Todos";
 import { useState } from "react";
 import "./style.css";
-import { v4 as uuidv4 } from "uuid";
 
 const TodoPage = () => {
   const [todos, setTodos] = useState(TODOS);
@@ -50,13 +49,13 @@ const TodoPage = () => {
   return (
     <div className="todo__page">
       <div className="todo__page--container">
-        <TodoHeader addTodo={addTodo} />
         <TodoList
           todos={todos}
           updateStatus={updateStatus}
           editTodo={editTodo}
           deleteTodo={deleteTodo}
         />
+        <AddTask addTodo={addTodo} />
         <TodoFooter todoLeft={todoLeft()} />
       </div>
     </div>

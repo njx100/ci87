@@ -4,7 +4,7 @@ import AddTaskWindow from "../AddTaskWindow";
 import "./style.css";
 import { useState } from "react";
 
-const TodoHeader = ({ addTodo }) => {
+const AddTask = ({ addTodo }) => {
   const [isAddingTask, setIsAddingTask] = useState(false);
 
   const handleDisplayAddTask = (addingStatus) => {
@@ -27,4 +27,4 @@ const TodoHeader = ({ addTodo }) => {
   );
 };
 
-export default TodoHeader;
+export default AddTask;
