@@ -3,10 +3,13 @@ import TodoFooter from "../../components/TodoFooter";
 import TodoList from "../../components/TodoList";
 import { TODOS } from "../../Data/Todos";
 import { useState } from "react";
+import { ThemeContext } from "../../components/ThemeContext";
 import "./style.css";
 
 const TodoPage = () => {
   const [todos, setTodos] = useState(TODOS);
+  const [theme, setTheme] = useState("default");
+
   const todoLeft = () => {
     let todoCounter = 0;
     todos.forEach((todo) => {
@@ -47,18 +50,20 @@ const TodoPage = () => {
   };
 
   return (
-    <div className="todo__page">
-      <div className="todo__page--container">
-        <TodoList
-          todos={todos}
-          updateStatus={updateStatus}
-          editTodo={editTodo}
-          deleteTodo={deleteTodo}
-        />
-        <AddTask addTodo={addTodo} />
-        <TodoFooter todoLeft={todoLeft()} />
+    <ThemeContext.Provider value={theme}>
+      <div className={theme === "dark" ? "todo__page--dark" : "todo__page"}>
+        <div className="todo__page--container">
+          <TodoList
+            todos={todos}
+            updateStatus={updateStatus}
+            editTodo={editTodo}
+            deleteTodo={deleteTodo}
+          />
+          <AddTask addTodo={addTodo} />
+          <TodoFooter todoLeft={todoLeft()} setTheme={setTheme} />
+        </div>
       </div>
-    </div>
+    </ThemeContext.Provider>
   );
 };
 

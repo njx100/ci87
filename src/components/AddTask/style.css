@@ -31,6 +31,12 @@ button.pswp__button {
   font-size: 3rem;
 }
 
+.add-icon-dark {
+  color: #181618;
+  margin-top: 3rem;
+  font-size: 3rem;
+}
+
 .add-icon:hover {
   color: #ffa800;
   transform: scale(1.1);

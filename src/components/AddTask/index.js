@@ -2,9 +2,11 @@ import { AiFillPlusCircle } from "react-icons/ai";
 
 import AddTaskWindow from "../AddTaskWindow";
 import "./style.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ThemeContext } from "../ThemeContext";
 
 const AddTask = ({ addTodo }) => {
+  const theme = useContext(ThemeContext);
   const [isAddingTask, setIsAddingTask] = useState(false);
 
   const handleDisplayAddTask = (addingStatus) => {
@@ -20,7 +22,9 @@ const AddTask = ({ addTodo }) => {
         />
       ) : (
         <button className="add-btn" onClick={() => handleDisplayAddTask(true)}>
-          <AiFillPlusCircle className="add-icon" />
+          <AiFillPlusCircle
+            className={theme === "dark" ? "add-icon-dark" : "add-icon"}
+          />
         </button>
       )}
     </div>

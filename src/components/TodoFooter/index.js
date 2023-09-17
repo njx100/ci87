@@ -1,10 +1,17 @@
+import { Switch } from "antd";
 import "./style.css";
 
-const TodoFooter = ({ todoLeft }) => {
+const TodoFooter = ({ todoLeft, setTheme }) => {
   return (
     <div className="todo-footer">
       <p>{`${todoLeft} ${todoLeft > 1 ? "tasks" : "task"} left!`}</p>
-      <p className="footer-text">MindX todolist</p>
+      <Switch
+        onChange={() =>
+          setTheme((prevTheme) =>
+            prevTheme === "default" ? "dark" : "default"
+          )
+        }
+      />
     </div>
   );
 };
