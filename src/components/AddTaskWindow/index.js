@@ -22,16 +22,18 @@ const AddTaskWindow = ({ handleDisplayAddTask, addTodo }) => {
 
   return (
     <div className="add-task-window">
-      <input
-        className="add-task-input"
-        type="text"
-        value={text}
-        onChange={(event) => setText(event.target.value)}
-        onKeyDown={(event) => {
-          event.key === "Enter" && text !== "" && handleSaveTodo();
-        }}
-        placeholder="Add new task..."
-      />
+      <div className="input-wrapper">
+        <input
+          className="add-task-input"
+          type="text"
+          value={text}
+          onChange={(event) => setText(event.target.value)}
+          onKeyDown={(event) => {
+            event.key === "Enter" && text !== "" && handleSaveTodo();
+          }}
+          placeholder="Add new task..."
+        />
+      </div>
 
       <Row className="est-pomodoros-container">
         <Col>
