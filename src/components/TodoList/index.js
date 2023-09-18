@@ -1,10 +1,13 @@
 import Todo from "../Todo";
 import { useState, useEffect } from "react";
 import "./style.css";
+import { useContext } from "react";
+import { ThemeContext } from "../ThemeContext";
 
 const TodoList = ({ todos: todoProps, updateStatus, editTodo, deleteTodo }) => {
   const [todos, setTodos] = useState(todoProps);
   const [displayTodos, setDisplayTodos] = useState("all");
+  const theme = useContext(ThemeContext);
 
   const handleSelect = (option) => {
     switch (option) {
@@ -25,6 +28,10 @@ const TodoList = ({ todos: todoProps, updateStatus, editTodo, deleteTodo }) => {
     }
   };
 
+  const radioBtnClassName = `${
+    theme === "dark" ? "radio--btn--dark" : "radio--btn"
+  }`;
+
   useEffect(() => {
     handleSelect(displayTodos);
   }, [todoProps]);
@@ -34,6 +41,7 @@ const TodoList = ({ todos: todoProps, updateStatus, editTodo, deleteTodo }) => {
       <fieldset className="display-box">
         <div>
           <input
+            className={radioBtnClassName}
             type="radio"
             id="all"
             name="display"
@@ -45,6 +53,7 @@ const TodoList = ({ todos: todoProps, updateStatus, editTodo, deleteTodo }) => {
         </div>
         <div>
           <input
+            className={radioBtnClassName}
             type="radio"
             id="active"
             name="display"
@@ -56,6 +65,7 @@ const TodoList = ({ todos: todoProps, updateStatus, editTodo, deleteTodo }) => {
         </div>
         <div>
           <input
+            className={radioBtnClassName}
             type="radio"
             id="completed"
             name="display"

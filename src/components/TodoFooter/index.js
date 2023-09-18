@@ -1,4 +1,5 @@
 import { Switch } from "antd";
+import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
 import "./style.css";
 
 const TodoFooter = ({ todoLeft, setTheme }) => {
@@ -11,6 +12,8 @@ const TodoFooter = ({ todoLeft, setTheme }) => {
             prevTheme === "default" ? "dark" : "default"
           )
         }
+        checkedChildren={<BsFillSunFill />}
+        unCheckedChildren={<BsFillMoonFill />}
       />
     </div>
   );

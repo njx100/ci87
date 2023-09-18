@@ -1,20 +1,30 @@
 .add-task-window {
-  margin-top: 2rem;
+  /* margin-top: 2rem;
   background-color: white;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  display: flex;
-  flex-direction: column;
+  border-radius: 12px;
+  
   justify-content: center;
   align-items: center;
-  width: 100%;
-  font-size: 1.5rem;
+  
+  font-size: 1rem; */
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  justify-content: center;
+  padding: 1rem 2.5rem;
 }
 
-.add-task-input input {
-  padding: 2rem;
-  background-color: white;
-  font-size: 1.5rem !important;
+.input-wrapper {
+  max-width: 80%;
+  text-align: center;
+}
+
+.add-task-input {
+  /* padding: 2rem; */
+  background: none;
+  /* margin: auto 2rem; */
+  display: inline-block;
+  width: 100%;
 }
 
 .est-pomodoros-container {
@@ -30,6 +40,8 @@
 .pomodoros-input {
   text-align: center !important;
   height: 3rem;
+  background-color: inherit;
+  font-size: 0.5rem;
 }
 
 Button {
@@ -43,6 +55,14 @@ Button {
   text-align: center;
   padding: auto;
   font-size: 1.5rem;
+}
+
+.save-and-cancel-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30%;
 }
 
 .save-and-cancel-btn Button {

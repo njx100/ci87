@@ -19,3 +19,11 @@
   font-size: 1.2rem;
   margin: 1rem;
 }
+
+.radio--btn {
+  accent-color: #b262ff;
+}
+
+.radio--btn--dark {
+  accent-color: black;
+}
