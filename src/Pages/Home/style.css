@@ -1,0 +1,42 @@
+.home__page {
+  text-align: center;
+  background: linear-gradient(45deg, #b262ff, #5166ff);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0rem 25rem;
+  font-family: sans-serif;
+  font-size: 1.5rem;
+}
+
+.home__page--light {
+  background: linear-gradient(45deg, #b262ff, #5166ff);
+}
+
+.home__page--dark {
+  background: black;
+  color: white;
+}
+
+.home__page h2,
+.home__page h3 {
+  margin: 2rem;
+  /* color: white; */
+}
+
+.home__page ul li {
+  list-style-type: none;
+}
+
+.home__page--container {
+  border-radius: 15px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  padding: 5px;
+}

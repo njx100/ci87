@@ -2,14 +2,14 @@ import "./style.css";
 import { useState, useContext } from "react";
 import { DeleteOutlined } from "@ant-design/icons";
 import { AiFillCheckSquare } from "react-icons/ai";
-import { ThemeContext } from "../ThemeContext";
+import { ThemeContext } from "../../../components/ThemeContext";
 
 const Todo = ({ todo, updateStatus, editTodo, deleteTodo }) => {
   const { id, task, isCompleted, estPomodoros } = todo;
   const [isEditing, setIsEditing] = useState(false);
   const [text, setText] = useState(task);
   const [displayDelete, setDisplayDelete] = useState(false);
-  const theme = useContext(ThemeContext);
+  const themeCtx = useContext(ThemeContext);
 
   const handleEnter = (e) => {
     if (e.key === "Enter" && text) {
@@ -18,6 +18,12 @@ const Todo = ({ todo, updateStatus, editTodo, deleteTodo }) => {
     }
   };
 
+  const btnClassName = `${
+    themeCtx.theme === "dark"
+      ? `checkbox-dark ${!isCompleted && "checkbox-unchecked"}`
+      : `checkbox ${!isCompleted && "checkbox-unchecked"}`
+  }`;
+
   return (
     <div
       className="todo-container"
@@ -25,13 +31,7 @@ const Todo = ({ todo, updateStatus, editTodo, deleteTodo }) => {
       onMouseOut={() => setDisplayDelete(false)}
     >
       <button onClick={() => updateStatus(id)}>
-        <AiFillCheckSquare
-          className={
-            theme === "dark"
-              ? `checkbox-dark ${!isCompleted && "checkbox-unchecked"}`
-              : `checkbox ${!isCompleted && "checkbox-unchecked"}`
-          }
-        />
+        <AiFillCheckSquare className={btnClassName} />
       </button>
 
       {isEditing ? (

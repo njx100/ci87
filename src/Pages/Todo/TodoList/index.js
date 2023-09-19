@@ -2,12 +2,12 @@ import Todo from "../Todo";
 import { useState, useEffect } from "react";
 import "./style.css";
 import { useContext } from "react";
-import { ThemeContext } from "../ThemeContext";
+import { ThemeContext } from "../../../components/ThemeContext";
 
 const TodoList = ({ todos: todoProps, updateStatus, editTodo, deleteTodo }) => {
   const [todos, setTodos] = useState(todoProps);
   const [displayTodos, setDisplayTodos] = useState("all");
-  const theme = useContext(ThemeContext);
+  const themeCtx = useContext(ThemeContext);
 
   const handleSelect = (option) => {
     switch (option) {
@@ -29,7 +29,7 @@ const TodoList = ({ todos: todoProps, updateStatus, editTodo, deleteTodo }) => {
   };
 
   const radioBtnClassName = `${
-    theme === "dark" ? "radio--btn--dark" : "radio--btn"
+    themeCtx.theme === "dark" ? "radio--btn--dark" : "radio--btn"
   }`;
 
   useEffect(() => {
