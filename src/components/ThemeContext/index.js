@@ -1,3 +1,4 @@
 import { createContext } from "react";
 
-export const ThemeContext = createContext("default");
+const defaultValue = { theme: "default" };
+export const ThemeContext = createContext(defaultValue);

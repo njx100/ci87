@@ -1,14 +1,14 @@
-import AddTask from "../../components/AddTask";
-import TodoFooter from "../../components/TodoFooter";
-import TodoList from "../../components/TodoList";
+import AddTask from "./AddTask";
+import TodoFooter from "./TodoFooter";
+import TodoList from "./TodoList";
 import { TODOS } from "../../Data/Todos";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { ThemeContext } from "../../components/ThemeContext";
 import "./style.css";
 
 const TodoPage = () => {
   const [todos, setTodos] = useState(TODOS);
-  const [theme, setTheme] = useState("default");
+  const themeCtx = useContext(ThemeContext);
 
   const todoLeft = () => {
     let todoCounter = 0;
@@ -49,21 +49,23 @@ const TodoPage = () => {
     setTodos(newTodoList);
   };
 
+  const todoPageClassName = `${
+    themeCtx.theme === "dark" ? "todo__page--dark" : "todo__page"
+  }`;
+
   return (
-    <ThemeContext.Provider value={theme}>
-      <div className={theme === "dark" ? "todo__page--dark" : "todo__page"}>
-        <div className="todo__page--container">
-          <TodoList
-            todos={todos}
-            updateStatus={updateStatus}
-            editTodo={editTodo}
-            deleteTodo={deleteTodo}
-          />
-          <AddTask addTodo={addTodo} />
-          <TodoFooter todoLeft={todoLeft()} setTheme={setTheme} />
-        </div>
+    <div className={todoPageClassName}>
+      <div className="todo__page--container">
+        <TodoList
+          todos={todos}
+          updateStatus={updateStatus}
+          editTodo={editTodo}
+          deleteTodo={deleteTodo}
+        />
+        <AddTask addTodo={addTodo} />
+        <TodoFooter todoLeft={todoLeft()} />
       </div>
-    </ThemeContext.Provider>
+    </div>
   );
 };
 
