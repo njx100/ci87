@@ -1,22 +1,22 @@
 import Header from "../../components/Header";
+import { useContext } from "react";
+import { ThemeContext } from "../../components/ThemeContext";
 import "./style.css";
 
 const Home = () => {
+  const themeCtx = useContext(ThemeContext);
+
+  const homePageClassName = `home__page ${
+    themeCtx.theme === "dark" ? "home__page--dark" : "home__page--light"
+  }`;
+
   return (
     <div>
       <Header />
-      <div className="home__page">
+      <div className={homePageClassName}>
         <div>
-          <h2>Stay organized and productive with our powerful todo app.</h2>
-          <p>
-            Our todo app is the perfect way to keep track of your tasks and
-            deadlines. With its simple and intuitive interface, you can easily
-            add, edit, and delete tasks, as well as set due dates and
-            priorities. You can also create different lists to organize your
-            tasks by project, category, or anything else you need.
-          </p>
-
-          <h3>Features:</h3>
+          <h2>Stay organized and productive with our powerful todo app</h2>
+          <h3>Features</h3>
           <ul>
             <li>Add, edit, and delete tasks with ease</li>
             <li> Set due dates and priorities</li>
@@ -24,7 +24,7 @@ const Home = () => {
             <li> Receive reminders</li>
             <li> Collaborate with others (coming soon)</li>
           </ul>
-          <h3>Benefits:</h3>
+          <h3>Benefits</h3>
           <ul>
             <li>Stay organized and productive</li>
             <li>Reduce stress and anxiety</li>
