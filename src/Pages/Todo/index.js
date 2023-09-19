@@ -5,6 +5,7 @@ import { TODOS } from "../../Data/Todos";
 import { useState, useContext } from "react";
 import { ThemeContext } from "../../components/ThemeContext";
 import "./style.css";
+import Header from "../../components/Header";
 
 const TodoPage = () => {
   const [todos, setTodos] = useState(TODOS);
@@ -54,16 +55,19 @@ const TodoPage = () => {
   }`;
 
   return (
-    <div className={todoPageClassName}>
-      <div className="todo__page--container">
-        <TodoList
-          todos={todos}
-          updateStatus={updateStatus}
-          editTodo={editTodo}
-          deleteTodo={deleteTodo}
-        />
-        <AddTask addTodo={addTodo} />
-        <TodoFooter todoLeft={todoLeft()} />
+    <div>
+      <Header />
+      <div className={todoPageClassName}>
+        <div className="todo__page--container">
+          <TodoList
+            todos={todos}
+            updateStatus={updateStatus}
+            editTodo={editTodo}
+            deleteTodo={deleteTodo}
+          />
+          <AddTask addTodo={addTodo} />
+          <TodoFooter todoLeft={todoLeft()} />
+        </div>
       </div>
     </div>
   );
