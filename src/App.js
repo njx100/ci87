@@ -1,6 +1,6 @@
 import "./App.css";
 import Todo from "./Pages/Todo";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import NotFound from "./Pages/NotFound";
 import { useState } from "react";

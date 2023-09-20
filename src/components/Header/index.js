@@ -1,8 +1,8 @@
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Switch } from "antd";
 import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
 import { ThemeContext } from "../ThemeContext";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import "./style.css";
 import logo from "./logo-white.png";
 
