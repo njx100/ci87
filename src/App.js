@@ -13,9 +13,9 @@ const App = () => {
     <ThemeContext.Provider value={{ theme: theme, setTheme: setTheme }}>
       <BrowserRouter className="App">
         <Routes>
-          <Route index element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/todos" element={<Todo />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </ThemeContext.Provider>
