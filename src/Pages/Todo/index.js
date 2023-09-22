@@ -2,14 +2,27 @@ import AddTask from "./AddTask";
 import TodoFooter from "./TodoFooter";
 import TodoList from "./TodoList";
 import { TODOS } from "../../Data/Todos";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { ThemeContext } from "../../components/ThemeContext";
 import "./style.css";
 import Header from "../../components/Header";
+import axios from "axios";
 
 const TodoPage = () => {
   const [todos, setTodos] = useState(TODOS);
   const themeCtx = useContext(ThemeContext);
+  const urlToFetch = "https://650c557c47af3fd22f677e50.mockapi.io";
+  const endPoint = "/todos";
+
+  const fetchTodos = async () => {
+    const response = await axios.get(urlToFetch + endPoint);
+
+    console.log(response.data);
+  };
+
+  useEffect(() => {
+    fetchTodos();
+  }, []);
 
   const todoLeft = () => {
     let todoCounter = 0;
@@ -57,6 +70,7 @@ const TodoPage = () => {
   return (
     <div>
       <Header />
+
       <div className={todoPageClassName}>
         <div className="todo__page--container">
           <TodoList
@@ -66,6 +80,7 @@ const TodoPage = () => {
             deleteTodo={deleteTodo}
           />
           <AddTask addTodo={addTodo} />
+          <button onClick={fetchTodos}>Fetch</button>
           <TodoFooter todoLeft={todoLeft()} />
         </div>
       </div>
