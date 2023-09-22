@@ -31,3 +31,8 @@
   color: black;
   padding: 5px;
 }
+
+.fetch-btn {
+  margin: 2rem;
+  background: inherit;
+}
