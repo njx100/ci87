@@ -10,15 +10,15 @@ const App = () => {
   const [theme, setTheme] = useState("default");
 
   return (
-    <ThemeContext.Provider value={{ theme: theme, setTheme: setTheme }}>
-      <BrowserRouter className="App">
+    <BrowserRouter className="App">
+      <ThemeContext.Provider value={{ theme: theme, setTheme: setTheme }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/todos" element={<Todo />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
-    </ThemeContext.Provider>
+      </ThemeContext.Provider>
+    </BrowserRouter>
   );
 };
 
