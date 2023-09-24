@@ -51,6 +51,7 @@ const TodoPage = () => {
   const deleteTodo = (id) => {
     const newTodoList = todos.filter((todo) => {
       if (todo.id !== id) return todo;
+      return false;
     });
     setTodos(newTodoList);
   };
