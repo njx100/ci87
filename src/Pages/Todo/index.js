@@ -2,8 +2,8 @@ import AddTask from "./AddTask";
 import TodoFooter from "./TodoFooter";
 import TodoList from "./TodoList";
 // import { useFetchTodos } from "../../components/useFetchTodos";
-import { TODOS } from "../../Data/Todos";
-import { useState, useContext } from "react";
+// import { TODOS } from "../../Data/Todos";
+import { useState, useContext, useEffect } from "react";
 import { ThemeContext } from "../../components/ThemeContext";
 import axios from "axios";
 import "./style.css";
@@ -13,8 +13,9 @@ import { Button } from "antd";
 const TodoPage = () => {
   const urlToFetch = "https://650c557c47af3fd22f677e50.mockapi.io";
   const todosEndPoint = "/todos";
-  const [todos, setTodos] = useState(TODOS);
+  const [todos, setTodos] = useState([]);
   const themeCtx = useContext(ThemeContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   const todoLeft = () => {
     let todoCounter = 0;
@@ -25,7 +26,15 @@ const TodoPage = () => {
   };
 
   const addTodo = (newTodo) => {
-    setTodos([...todos, newTodo]);
+    setIsLoading(true);
+    axios
+      .post(urlToFetch + todosEndPoint, newTodo)
+      .then((response) => {
+        fetchTodos();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const updateStatus = (key) => {
@@ -61,25 +70,35 @@ const TodoPage = () => {
   }`;
 
   const fetchTodos = async () => {
+    setIsLoading(true);
     const response = await axios.get(urlToFetch + todosEndPoint);
     setTodos(response.data);
+    setIsLoading(false);
   };
+
+  useEffect(() => {
+    fetchTodos();
+  }, []);
 
   return (
     <div>
       <Header />
       <div className={todoPageClassName}>
         <div className="todo__page--container">
-          <TodoList
-            todos={todos}
-            updateStatus={updateStatus}
-            editTodo={editTodo}
-            deleteTodo={deleteTodo}
-          />
+          {isLoading ? (
+            <div>Loading...</div>
+          ) : (
+            <TodoList
+              todos={todos}
+              updateStatus={updateStatus}
+              editTodo={editTodo}
+              deleteTodo={deleteTodo}
+            />
+          )}
           <AddTask addTodo={addTodo} />
-          <Button className="fetch-btn" onClick={fetchTodos}>
+          {/* <Button className="fetch-btn" onClick={fetchTodos}>
             Fetch todos
-          </Button>
+          </Button> */}
           <TodoFooter todoLeft={todoLeft()} />
         </div>
       </div>
