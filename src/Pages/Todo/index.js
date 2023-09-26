@@ -26,36 +26,26 @@ const TodoPage = () => {
   };
 
   const addTodo = (newTodo) => {
-    axios
-      .post(urlToFetch + todosEndPoint, newTodo)
-      .then((response) => {
-        setTodos((prevTodos) => [...prevTodos, response.data]); // setTodos here to update todolist without re-fetching data from api
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    setTodos((prevTodos) => [...prevTodos, newTodo]); // render new todo before post api to increase user experience
+    axios.post(urlToFetch + todosEndPoint, newTodo).catch((error) => {
+      console.log(error);
+    });
   };
 
-  const updateStatus = (key) => {
+  const updateStatus = (id, isCompleted) => {
     const newStatus = todos.map((todo) => {
-      if (todo.id === key) {
+      if (todo.id === id) {
         todo.isCompleted = !todo.isCompleted;
       }
       return todo;
     });
     setTodos(newStatus);
+    axios.put(urlToFetch + todosEndPoint + id, {
+      isCompleted: !isCompleted,
+    });
   };
 
   const editTodo = (id, text) => {
-    // const updatedTodoList = todos.map((todo) => {
-    //   if (todo.id === id) {
-    //     todo.task = text;
-    //   }
-    //   return todo;
-    // });
-    // setTodos(updatedTodoList);
-    console.log(id);
-    console.log(text);
     axios.put(urlToFetch + todosEndPoint + id, { task: text });
   };
 
@@ -65,6 +55,9 @@ const TodoPage = () => {
       return false;
     });
     setTodos(newTodoList);
+    axios.delete(urlToFetch + todosEndPoint + id).catch((error) => {
+      console.log(error);
+    });
   };
 
   const todoPageClassName = `${
