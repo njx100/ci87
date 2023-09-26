@@ -11,8 +11,8 @@ import Header from "../../components/Header";
 import { Button } from "antd";
 
 const TodoPage = () => {
-  const urlToFetch = "https://650c557c47af3fd22f677e50.mockapi.io";
-  const todosEndPoint = "/todos";
+  const urlToFetch = "https://650c557c47af3fd22f677e50.mockapi.io/";
+  const todosEndPoint = "todos/";
   const [todos, setTodos] = useState([]);
   const themeCtx = useContext(ThemeContext);
   const [isLoading, setIsLoading] = useState(false);
@@ -26,11 +26,10 @@ const TodoPage = () => {
   };
 
   const addTodo = (newTodo) => {
-    setIsLoading(true);
     axios
       .post(urlToFetch + todosEndPoint, newTodo)
       .then((response) => {
-        fetchTodos();
+        setTodos((prevTodos) => [...prevTodos, response.data]); // setTodos here to update todolist without re-fetching data from api
       })
       .catch((error) => {
         console.log(error);
@@ -48,13 +47,16 @@ const TodoPage = () => {
   };
 
   const editTodo = (id, text) => {
-    const updatedTodoList = todos.map((todo) => {
-      if (todo.id === id) {
-        todo.task = text;
-      }
-      return todo;
-    });
-    setTodos(updatedTodoList);
+    // const updatedTodoList = todos.map((todo) => {
+    //   if (todo.id === id) {
+    //     todo.task = text;
+    //   }
+    //   return todo;
+    // });
+    // setTodos(updatedTodoList);
+    console.log(id);
+    console.log(text);
+    axios.put(urlToFetch + todosEndPoint + id, { task: text });
   };
 
   const deleteTodo = (id) => {
