@@ -37,3 +37,8 @@
   margin: 2rem;
   background: inherit;
 }
+
+.loading-text {
+  margin: 3rem;
+  font-size: 3rem;
+}
