@@ -32,6 +32,7 @@ const TodoPage = () => {
 
   const updateStatus = (id, isCompleted) => {
     const newStatus = todos.map((todo) => {
+      //render before put for better UX
       if (todo.id === id) {
         todo.isCompleted = !todo.isCompleted;
       }
