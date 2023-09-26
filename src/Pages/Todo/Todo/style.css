@@ -62,6 +62,7 @@
   opacity: 0.2;
 }
 
-/* .est-pomodoros {
-  margin-right: 2px;
-} */
+.est-pomodoros,
+.loading-spin {
+  margin-left: 1rem;
+}

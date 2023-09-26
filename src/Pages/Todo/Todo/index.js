@@ -3,12 +3,15 @@ import { useState, useContext } from "react";
 import { DeleteOutlined } from "@ant-design/icons";
 import { AiFillCheckSquare } from "react-icons/ai";
 import { ThemeContext } from "../../../components/ThemeContext";
+import { LoadingOutlined } from "@ant-design/icons";
+import { Spin } from "antd";
 
 const Todo = ({ todo, updateStatus, editTodo, deleteTodo }) => {
   const { id, task, isCompleted, estPomodoros } = todo;
   const [isEditing, setIsEditing] = useState(false);
   const [text, setText] = useState(task);
   const [displayDelete, setDisplayDelete] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   const themeCtx = useContext(ThemeContext);
 
   const handleEnter = (e) => {
@@ -54,10 +57,17 @@ const Todo = ({ todo, updateStatus, editTodo, deleteTodo }) => {
       )}
 
       <p className="est-pomodoros">{estPomodoros}</p>
-      <DeleteOutlined
-        className={`delete-btn ${displayDelete ? "delete-btn-active" : null}`}
-        onClick={() => deleteTodo(id)}
-      />
+      {isDeleting ? (
+        <LoadingOutlined className="loading-spin" spin />
+      ) : (
+        <DeleteOutlined
+          className={`delete-btn ${displayDelete ? "delete-btn-active" : null}`}
+          onClick={() => {
+            setIsDeleting(true);
+            deleteTodo(id);
+          }}
+        />
+      )}
     </div>
   );
 };

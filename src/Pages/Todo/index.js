@@ -1,14 +1,12 @@
 import AddTask from "./AddTask";
 import TodoFooter from "./TodoFooter";
 import TodoList from "./TodoList";
-// import { useFetchTodos } from "../../components/useFetchTodos";
-// import { TODOS } from "../../Data/Todos";
 import { useState, useContext, useEffect } from "react";
 import { ThemeContext } from "../../components/ThemeContext";
 import axios from "axios";
 import "./style.css";
 import Header from "../../components/Header";
-import { Button } from "antd";
+import LoadingTodos from "./LoadingTodos";
 
 const TodoPage = () => {
   const urlToFetch = "https://650c557c47af3fd22f677e50.mockapi.io/";
@@ -26,7 +24,7 @@ const TodoPage = () => {
   };
 
   const addTodo = (newTodo) => {
-    setTodos((prevTodos) => [...prevTodos, newTodo]); // render new todo before post api to increase user experience
+    setTodos((prevTodos) => [...prevTodos, newTodo]);
     axios.post(urlToFetch + todosEndPoint, newTodo).catch((error) => {
       console.log(error);
     });
@@ -50,14 +48,18 @@ const TodoPage = () => {
   };
 
   const deleteTodo = (id) => {
-    const newTodoList = todos.filter((todo) => {
-      if (todo.id !== id) return todo;
-      return false;
-    });
-    setTodos(newTodoList);
-    axios.delete(urlToFetch + todosEndPoint + id).catch((error) => {
-      console.log(error);
-    });
+    axios
+      .delete(urlToFetch + todosEndPoint + id)
+      .catch((error) => {
+        console.log(error);
+      })
+      .then(() => {
+        const newTodoList = todos.filter((todo) => {
+          if (todo.id !== id) return todo;
+          return false;
+        });
+        setTodos(newTodoList);
+      });
   };
 
   const todoPageClassName = `${
@@ -81,7 +83,8 @@ const TodoPage = () => {
       <div className={todoPageClassName}>
         <div className="todo__page--container">
           {isLoading ? (
-            <div>Loading...</div>
+            // <div className="loading-text">Loading...</div>
+            <LoadingTodos />
           ) : (
             <TodoList
               todos={todos}
@@ -91,9 +94,7 @@ const TodoPage = () => {
             />
           )}
           <AddTask addTodo={addTodo} />
-          {/* <Button className="fetch-btn" onClick={fetchTodos}>
-            Fetch todos
-          </Button> */}
+
           <TodoFooter todoLeft={todoLeft()} />
         </div>
       </div>

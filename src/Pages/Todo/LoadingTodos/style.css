@@ -1,0 +1,19 @@
+.loading-banner {
+  width: 90%;
+  height: 50px;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.spinner {
+  margin-top: 5rem;
+}
+
+.alert-text {
+  color: blue;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+}
