@@ -32,6 +32,7 @@ const AddTaskWindow = ({ handleDisplayAddTask, addTodo }) => {
             event.key === "Enter" && text !== "" && handleSaveTodo();
           }}
           placeholder="Add new task..."
+          autoFocus
         />
       </div>
 

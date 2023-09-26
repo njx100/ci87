@@ -13,9 +13,13 @@
 }
 
 .text-container {
-  width: 100%;
+  width: 300px;
   text-align: left;
   margin-left: 1rem;
+}
+
+.text-label {
+  word-break: break-all;
 }
 
 .task-completed {

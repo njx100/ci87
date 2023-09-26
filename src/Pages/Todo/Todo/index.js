@@ -48,7 +48,7 @@ const Todo = ({ todo, updateStatus, editTodo, deleteTodo }) => {
       ) : (
         <div className="text-container">
           <label
-            className={isCompleted ? "task-completed" : null}
+            className={`text-label ${isCompleted ? "task-completed" : null}`}
             onDoubleClick={() => setIsEditing(true)}
           >
             {text}
