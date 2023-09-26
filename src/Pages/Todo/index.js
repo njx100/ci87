@@ -11,8 +11,8 @@ import Header from "../../components/Header";
 import { Button } from "antd";
 
 const TodoPage = () => {
-  const urlToFetch = "https://650c557c47af3fd22f677e50.mockapi.io";
-  const todosEndPoint = "/todos";
+  const urlToFetch = "https://650c557c47af3fd22f677e50.mockapi.io/";
+  const todosEndPoint = "todos/";
   const [todos, setTodos] = useState([]);
   const themeCtx = useContext(ThemeContext);
   const [isLoading, setIsLoading] = useState(false);
@@ -26,35 +26,27 @@ const TodoPage = () => {
   };
 
   const addTodo = (newTodo) => {
-    setIsLoading(true);
-    axios
-      .post(urlToFetch + todosEndPoint, newTodo)
-      .then((response) => {
-        fetchTodos();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    setTodos((prevTodos) => [...prevTodos, newTodo]); // render new todo before post api to increase user experience
+    axios.post(urlToFetch + todosEndPoint, newTodo).catch((error) => {
+      console.log(error);
+    });
   };
 
-  const updateStatus = (key) => {
+  const updateStatus = (id, isCompleted) => {
     const newStatus = todos.map((todo) => {
-      if (todo.id === key) {
+      if (todo.id === id) {
         todo.isCompleted = !todo.isCompleted;
       }
       return todo;
     });
     setTodos(newStatus);
+    axios.put(urlToFetch + todosEndPoint + id, {
+      isCompleted: !isCompleted,
+    });
   };
 
   const editTodo = (id, text) => {
-    const updatedTodoList = todos.map((todo) => {
-      if (todo.id === id) {
-        todo.task = text;
-      }
-      return todo;
-    });
-    setTodos(updatedTodoList);
+    axios.put(urlToFetch + todosEndPoint + id, { task: text });
   };
 
   const deleteTodo = (id) => {
@@ -63,6 +55,9 @@ const TodoPage = () => {
       return false;
     });
     setTodos(newTodoList);
+    axios.delete(urlToFetch + todosEndPoint + id).catch((error) => {
+      console.log(error);
+    });
   };
 
   const todoPageClassName = `${

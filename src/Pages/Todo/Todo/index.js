@@ -30,7 +30,7 @@ const Todo = ({ todo, updateStatus, editTodo, deleteTodo }) => {
       onMouseOver={() => setDisplayDelete(true)}
       onMouseOut={() => setDisplayDelete(false)}
     >
-      <button onClick={() => updateStatus(id)}>
+      <button onClick={() => updateStatus(id, isCompleted)}>
         <AiFillCheckSquare className={btnClassName} />
       </button>
 
